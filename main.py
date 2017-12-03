@@ -74,29 +74,29 @@ for com in set(partition.values()):
     list_nodes = [nodes for nodes in partition.keys() if partition[nodes] == com]
     nx.draw_networkx_nodes(G, pos, list_nodes, node_size=50, node_color=str(count / size))
 
-nx.draw_networkx_edges(G, pos, with_labels=True, alpha=0.5)
-plt.show()
-values = [partition.get(node) for node in G.nodes()]
-nx.draw_spring(G, cmap=plt.get_cmap('jet'), node_color = values, node_size=30, with_labels=False)
-plt.show()
+    nx.draw_networkx_edges(G, pos, with_labels=True, alpha=0.5)
+    plt.show()
+    values = [partition.get(node) for node in G.nodes()]
+    nx.draw_spring(G, cmap=plt.get_cmap('jet'), node_color = values, node_size=30, with_labels=False)
+    plt.show()
 # Clustering evaluation
-# print('Modularity: {0:.4f}'.format(community.modularity(partition,G)))
+    print('Modularity: {0:.4f}'.format(community.modularity(partition, G)))
 
 # if display_plots:
-#     fx.display_partition(G,partition,2)
+    fx.display_partition(G,partition,2)
 
 #Calculate induced graph
-# ind = community.induced_graph(partition, G)
+    ind = community.induced_graph(partition, G)
 
 #Display induced graph
-#if display_plots:
-#   plt.figure(3)
-#   pos = nx.random_layout(ind)
-#   nx.draw_networkx_edges(ind,pos, alpha=0.5)
-#   nx.draw_networkx_nodes(ind, pos,node_size=40,node_color='1')
-#   plt.show()
+if display_plots:
+   plt.figure(3)
+   pos = nx.random_layout(ind)
+   nx.draw_networkx_edges(ind,pos, alpha=0.5)
+   nx.draw_networkx_nodes(ind, pos,node_size=40,node_color='1')
+   plt.show()
 
-# print(fx.opinion_leaders(G,1))
-# print(fx.community_core(G,'3844'))
+   print(fx.opinion_leaders(G,1))
+   print(fx.community_core(G,'3844'))
 #
 # print(rs.RoleScorer.community_bridge(13))
